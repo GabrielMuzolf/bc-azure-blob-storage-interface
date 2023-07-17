@@ -1,0 +1,1 @@
+# bc-azure-blob-storage-manager
