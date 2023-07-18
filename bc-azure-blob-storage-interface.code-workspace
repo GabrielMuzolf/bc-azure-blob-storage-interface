@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "Apps"
+			"path": "Apps/ABS Interface"
 		},
 		{
-			"path": "Tests"
+			"path": "Tests/ABS Interface Test"
 		}
 	],
 	"settings": {}
