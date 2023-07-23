@@ -43,15 +43,29 @@ page 90001 "Storage Account Card GM"
             action(SetSharedKey)
             {
                 Caption = 'Set Shared Key';
+                ToolTip = 'Sets the storage account shared key.';
                 Image = EncryptionKeys;
                 Promoted = true;
-                PromotedCategory = Process;
                 PromotedOnly = true;
-                ToolTip = 'Sets the storage account shared key.';
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
                     Rec.SetSharedKey();
+                end;
+            }
+            action(RefreshContainers)
+            {
+                Caption = 'Refresh';
+                ToolTip = 'Run this action to refresh container list for the storage account.';
+                Image = Refresh;
+                Promoted = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
+
+                trigger OnAction();
+                begin
+                    Rec.RefreshContainers();
                 end;
             }
         }

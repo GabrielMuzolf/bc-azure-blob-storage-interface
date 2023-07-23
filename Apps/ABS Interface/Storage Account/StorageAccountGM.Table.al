@@ -37,7 +37,7 @@ table 90000 "Storage Account GM"
     }
     trigger OnDelete()
     begin
-        DeleteStorageContainers();
+        DeleteContainers();
     end;
 
     trigger OnRename()
@@ -64,7 +64,20 @@ table 90000 "Storage Account GM"
         Rec.Validate("Shared Key", NewSharedKey);
     end;
 
-    local procedure DeleteStorageContainers()
+    /// <summary>
+    /// Refreshes the list of containers for a storage account. This operation removes the existing containers and replaces them with the containers defined in the Azure Blob Storage structure.
+    /// </summary>
+    procedure RefreshContainers()
+    var
+        RefreshContainersGM: Codeunit "Refresh Containers GM";
+    begin
+        RefreshContainersGM.RefreshContainers(Rec);
+    end;
+
+    /// <summary>
+    /// Deletes containers for the storage account.
+    /// </summary>
+    procedure DeleteContainers()
     var
         ABSContainerGM: Record "ABS Container GM";
     begin
