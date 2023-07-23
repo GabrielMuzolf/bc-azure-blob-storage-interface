@@ -44,4 +44,24 @@ table 90001 "ABS Container GM"
         }
     }
 
+    /// <summary>
+    /// Creates container with name <paramref name="ContainerName"/>.
+    /// </summary>
+    /// <param name="ContainerName">Container name</param>
+    procedure Create(ContainerName: Text)
+    var
+        ABSContainerOperationGM: Codeunit "ABS Container Operation GM";
+    begin
+        ABSContainerOperationGM.Create(Rec."Storage Account Name", ContainerName);
+    end;
+
+    /// <summary>
+    /// Deletes cotainer and his blobs from the storage account
+    /// </summary>
+    procedure Delete()
+    var
+        ABSContainerOperationGM: Codeunit "ABS Container Operation GM";
+    begin
+        ABSContainerOperationGM.Create(Rec."Storage Account Name", Rec.Name);
+    end;
 }
