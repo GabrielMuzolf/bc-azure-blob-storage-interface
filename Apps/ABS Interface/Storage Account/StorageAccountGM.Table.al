@@ -43,4 +43,20 @@ table 90000 "Storage Account GM"
 
     var
         RenameNotAllowedErr: Label 'Storage Account rename is not allowed.';
+
+    /// <summary>
+    /// Opens a dialog to set the shared key that will be used to authorize the storage account.
+    /// </summary>
+    [NonDebuggable]
+    procedure SetSharedKey()
+    var
+        PasswordDialogManagement: Codeunit "Password Dialog Management";
+        NewSharedKey: Text;
+    begin
+        NewSharedKey := PasswordDialogManagement.OpenPasswordDialog(true);
+        if NewSharedKey = '' then
+            exit;
+
+        Rec.Validate("Shared Key", NewSharedKey);
+    end;
 }
