@@ -33,10 +33,9 @@ page 90003 "ABS Containers Part GM"
     {
         area(Processing)
         {
-
-            action(Container)
+            action(Create)
             {
-                Caption = 'Contanier';
+                Caption = 'Create';
                 ToolTip = 'Run this action to create new container.';
                 ApplicationArea = All;
                 Image = Add;
