@@ -1,13 +1,13 @@
 /// <summary>
 /// Presents Azure storage account card.
 /// </summary>
-page 90001 "Storage Account Card"
+page 90001 "Storage Account Card GM"
 {
     Caption = 'Storage Account';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = None;
-    SourceTable = "Storage Account";
+    SourceTable = "Storage Account GM";
 
     layout
     {

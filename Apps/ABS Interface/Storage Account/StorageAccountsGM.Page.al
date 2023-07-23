@@ -1,14 +1,14 @@
 /// <summary>
 /// Presents information about Azure storage accounts.
 /// </summary>
-page 90000 "Storage Accounts"
+page 90000 "Storage Accounts GM"
 {
     ApplicationArea = All;
     Caption = 'Storage Accounts';
     PageType = List;
-    SourceTable = "Storage Account";
+    SourceTable = "Storage Account GM";
     UsageCategory = Lists;
-    CardPageId = "Storage Account Card";
+    CardPageId = "Storage Account Card GM";
     Editable = false;
 
     layout

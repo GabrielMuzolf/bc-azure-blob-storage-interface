@@ -2,7 +2,7 @@
 /// Represents a table for storing information about Azure storage accounts.
 /// https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
 /// </summary>
-table 90000 "Storage Account"
+table 90000 "Storage Account GM"
 {
     Caption = 'Storage Account';
     DataClassification = CustomerContent;
