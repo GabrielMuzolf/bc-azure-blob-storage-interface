@@ -25,6 +25,10 @@ page 90001 "Storage Account Card GM"
                     ToolTip = 'Specifies the storage account authorization shared key.';
                 }
             }
+            part("ABS Containers Part GM"; "ABS Containers Part GM")
+            {
+                SubPageLink = "Storage Account Name" = field(Name);
+            }
         }
     }
 }
