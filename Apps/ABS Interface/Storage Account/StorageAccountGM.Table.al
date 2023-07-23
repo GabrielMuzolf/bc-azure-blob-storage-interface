@@ -35,6 +35,10 @@ table 90000 "Storage Account GM"
             Clustered = true;
         }
     }
+    trigger OnDelete()
+    begin
+        DeleteStorageContainers();
+    end;
 
     trigger OnRename()
     begin
@@ -58,5 +62,13 @@ table 90000 "Storage Account GM"
             exit;
 
         Rec.Validate("Shared Key", NewSharedKey);
+    end;
+
+    local procedure DeleteStorageContainers()
+    var
+        ABSContainerGM: Record "ABS Container GM";
+    begin
+        ABSContainerGM.SetRange("Storage Account Name", Rec.Name);
+        ABSContainerGM.DeleteAll(true);
     end;
 }
