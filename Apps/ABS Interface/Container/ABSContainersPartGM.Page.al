@@ -28,4 +28,46 @@ page 90003 "ABS Containers Part GM"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+
+            action(Container)
+            {
+                Caption = 'Contanier';
+                ToolTip = 'Run this action to create new container.';
+                ApplicationArea = All;
+                Image = Add;
+
+                trigger OnAction();
+                begin
+                    CreateNewContainer();
+                end;
+            }
+            action(Delete)
+            {
+                Caption = 'Delete';
+                ToolTip = 'Run this action to delete cotainer and his blobs from the storage account.';
+                ApplicationArea = All;
+                Image = Delete;
+
+                trigger OnAction();
+                begin
+                    Rec.Delete();
+                end;
+            }
+        }
+    }
+
+    local procedure CreateNewContainer()
+    var
+        CreateContainerDialogGM: Page "Create Container Dialog GM";
+    begin
+        if not (CreateContainerDialogGM.RunModal() = Action::OK) then
+            exit;
+
+        Rec.Create(CreateContainerDialogGM.GetContainerName());
+    end;
 }
