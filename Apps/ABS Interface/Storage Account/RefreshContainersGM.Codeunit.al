@@ -3,7 +3,6 @@
 /// </summary>
 codeunit 90001 "Refresh Containers GM"
 {
-
     /// <summary>
     /// Refreshes the containers list for a given <paramref name="StorageAccountGM"/>. 
     /// Removes the currently defined containers for the storage account and replaces them with the defined Azure Blob Storage containers structure.
