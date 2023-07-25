@@ -20,4 +20,13 @@ codeunit 90002 "Text Constant GM"
     begin
         exit('[..]');
     end;
+
+    /// <summary>
+    /// Get Azure BLob Storage folder separator.
+    /// </summary>
+    /// <returns>'/'</returns>
+    procedure ABSFolderSeparator(): Text
+    begin
+        exit('/');
+    end;
 }

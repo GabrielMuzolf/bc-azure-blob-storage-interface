@@ -3,10 +3,15 @@
 /// </summary>
 enum 90000 "ABS Blob Type GM"
 {
+    value(0; " ")
+    {
+        Caption = ' ';
+    }
+
     /// <summary>
     /// Folder Type.
     /// </summary>
-    value(0; Folder)
+    value(1; Folder)
     {
         Caption = 'Folder';
     }
@@ -14,7 +19,7 @@ enum 90000 "ABS Blob Type GM"
     /// <summary>
     /// File Type.
     /// </summary>
-    value(1; "File")
+    value(2; "File")
     {
         Caption = 'File';
     }

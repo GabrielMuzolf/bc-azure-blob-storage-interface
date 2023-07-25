@@ -64,4 +64,15 @@ table 90001 "ABS Container GM"
     begin
         ABSContainerOperationGM.Delete(Rec."Storage Account Name", Rec.Name);
     end;
+
+    /// <summary>
+    /// Refreshes the list of blobs for a container. Removes the currently defined blobs and replaces them with the ones defined in the Azure Blob Storage container blob structure.
+    /// </summary>
+    procedure RefreshBlobs()
+    var
+        RefreshBlobFilesGM: Codeunit "Refresh Blob Files GM";
+    begin
+        RefreshBlobFilesGM.RefreshBlobs(Rec);
+    end;
+
 }
