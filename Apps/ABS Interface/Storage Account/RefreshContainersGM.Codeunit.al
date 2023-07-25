@@ -32,7 +32,7 @@ codeunit 90001 "Refresh Containers GM"
             Error(ABSOperationResponse.GetError());
     end;
 
-    local procedure InsertStorageContainers(StorageAccountGM: Record "Storage Account GM"; TempABSContainer: Record "ABS Container")
+    local procedure InsertStorageContainers(StorageAccountGM: Record "Storage Account GM"; var TempABSContainer: Record "ABS Container")
     var
         ABSContainerGM: Record "ABS Container GM";
     begin

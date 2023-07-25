@@ -62,6 +62,6 @@ table 90001 "ABS Container GM"
     var
         ABSContainerOperationGM: Codeunit "ABS Container Operation GM";
     begin
-        ABSContainerOperationGM.Create(Rec."Storage Account Name", Rec.Name);
+        ABSContainerOperationGM.Delete(Rec."Storage Account Name", Rec.Name);
     end;
 }
