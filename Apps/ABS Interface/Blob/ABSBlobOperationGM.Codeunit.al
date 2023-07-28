@@ -39,6 +39,21 @@ codeunit 90005 "ABS Blob Operation GM"
         RefreshBlobs(ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
     end;
 
+    /// <summary>
+    /// Deletes the specified blob represented by the <paramref name="ABSBlobFileGM"/> record from the container.
+    /// </summary>
+    /// <param name="ABSBlobFileGM">The ABS Blob File GM record representing the blob to be deleted.</param>
+    procedure Delete(ABSBlobFileGM: Record "ABS Blob File GM")
+    var
+        ABSBlobClient: Codeunit "ABS Blob Client";
+        ABSOperationResponse: Codeunit "ABS Operation Response";
+    begin
+        InitalizeBlobClient(ABSBlobClient, ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
+        ABSOperationResponse := ABSBlobClient.DeleteBlob(ABSBlobFileGM."Full Name");
+        ShowErrorIfNotSuccessful(ABSOperationResponse);
+        ABSBlobFileGM.Delete(true);
+    end;
+
     local procedure InitalizeBlobClient(var ABSBlobClient: Codeunit "ABS Blob Client"; StorageAccountName: Text[1024]; ContainerName: Text[2048])
     var
         StorageAccountGM: Record "Storage Account GM";

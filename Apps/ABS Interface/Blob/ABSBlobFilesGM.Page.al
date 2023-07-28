@@ -149,6 +149,7 @@ page 90005 "ABS Blob Files GM"
                 PromotedOnly = true;
                 PromotedCategory = Process;
                 Image = NewDocument;
+                Enabled = (ContainerName <> '');
 
                 trigger OnAction();
                 begin
@@ -163,10 +164,11 @@ page 90005 "ABS Blob Files GM"
                 PromotedOnly = true;
                 PromotedCategory = Process;
                 Image = Delete;
+                Enabled = ((ContainerName <> '') and (Rec.Type = "ABS Blob Type GM"::File));
 
                 trigger OnAction();
                 begin
-                    Message('Add implementation');
+                    Rec.Delete();
                 end;
             }
         }

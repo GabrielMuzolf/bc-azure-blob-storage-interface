@@ -143,4 +143,14 @@ table 90002 "ABS Blob File GM"
     begin
         ABSBlobOperationGM.Upload(Rec, ToPath);
     end;
+
+    /// <summary>
+    /// Deletes the specified blob from the container.
+    /// </summary>
+    procedure Delete()
+    var
+        ABSBlobOperationGM: Codeunit "ABS Blob Operation GM";
+    begin
+        ABSBlobOperationGM.Delete(Rec);
+    end;
 }
