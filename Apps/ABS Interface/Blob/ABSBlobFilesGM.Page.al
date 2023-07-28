@@ -152,7 +152,7 @@ page 90005 "ABS Blob Files GM"
 
                 trigger OnAction();
                 begin
-                    Message('Add implementation');
+                    Rec.Upload(CurrentFolder);
                 end;
             }
             action(Delete)
@@ -165,20 +165,6 @@ page 90005 "ABS Blob Files GM"
                 Image = Delete;
 
                 trigger OnAction();
-                begin
-                    Message('Add implementation');
-                end;
-            }
-            action(ShowStorageAccounts)
-            {
-                Caption = 'Storage Account';
-                ToolTip = 'Run this action to view/edit storage account.';
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
-                Image = Account;
-
-                trigger OnAction()
                 begin
                     Message('Add implementation');
                 end;

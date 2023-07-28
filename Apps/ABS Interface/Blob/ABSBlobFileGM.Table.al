@@ -132,4 +132,15 @@ table 90002 "ABS Blob File GM"
     begin
         ABSBlobOperationGM.Download(Rec);
     end;
+
+    /// <summary>
+    /// Uploads a blob file to the specified container path.
+    /// </summary>
+    /// <param name="ToPath">The destination path within the container to upload the file to.</param>
+    procedure Upload(ToPath: Text)
+    var
+        ABSBlobOperationGM: Codeunit "ABS Blob Operation GM";
+    begin
+        ABSBlobOperationGM.Upload(Rec, ToPath);
+    end;
 }

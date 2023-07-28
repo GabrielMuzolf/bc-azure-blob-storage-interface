@@ -3,7 +3,6 @@
 /// </summary>
 codeunit 90005 "ABS Blob Operation GM"
 {
-
     /// <summary>
     /// Downloads the specified <paramref name="ABSBlobFileGM"/> and saves it to the local file system.
     /// </summary>
@@ -20,6 +19,25 @@ codeunit 90005 "ABS Blob Operation GM"
         DownloadBlob(FileContent, ABSBlobFileGM.Name);
     end;
 
+    /// <summary>
+    /// Uploads a blob file represented by the <paramref name="ABSBlobFileGM"/> record to the specified container path <paramref name="ToPath"/>.
+    /// </summary>
+    /// <param name="ABSBlobFileGM">The ABS Blob File GM record representing the file to be uploaded.</param>
+    /// <param name="ToPath">The destination path within the container to upload the file to.</param>
+    procedure Upload(ABSBlobFileGM: Record "ABS Blob File GM"; ToPath: Text)
+    var
+        ABSBlobClient: Codeunit "ABS Blob Client";
+        ABSOperationResponse: Codeunit "ABS Operation Response";
+        BlobFileContentInStream: InStream;
+        BlobFileName: Text;
+        SelectFileLbl: Label 'Select a file';
+    begin
+        UploadIntoStream(SelectFileLbl, '', '', BlobFileName, BlobFileContentInStream);
+        InitalizeBlobClient(ABSBlobClient, ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
+        ABSOperationResponse := ABSBlobClient.PutBlobBlockBlobStream(ToPath + BlobFileName, BlobFileContentInStream);
+        ShowErrorIfNotSuccessful(ABSOperationResponse);
+        RefreshBlobs(ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
+    end;
 
     local procedure InitalizeBlobClient(var ABSBlobClient: Codeunit "ABS Blob Client"; StorageAccountName: Text[1024]; ContainerName: Text[2048])
     var
@@ -52,5 +70,13 @@ codeunit 90005 "ABS Blob Operation GM"
         FileOutStream.Write(BlobContent);
         TempBlob.CreateInStream(FileInStream, TextEncoding::UTF8);
         DownloadFromStream(FileInStream, '', '', '', ToFile);
+    end;
+
+    local procedure RefreshBlobs(StorageAccountName: Text[1024]; ContainerName: Text[2048])
+    var
+        ABSContainerGM: Record "ABS Container GM";
+    begin
+        ABSContainerGM.Get(StorageAccountName, ContainerName);
+        ABSContainerGM.RefreshBlobs();
     end;
 }
