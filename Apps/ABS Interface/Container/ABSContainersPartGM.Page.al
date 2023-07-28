@@ -32,6 +32,17 @@ page 90003 "ABS Containers Part GM"
     {
         area(Processing)
         {
+            action(BlobFiles)
+            {
+                Caption = 'Blob Files';
+                ToolTip = 'Run this action to show container blob files.';
+                Image = XMLFile;
+
+                trigger OnAction();
+                begin
+                    Rec.BlobFiles();
+                end;
+            }
             action(Create)
             {
                 Caption = 'Create';

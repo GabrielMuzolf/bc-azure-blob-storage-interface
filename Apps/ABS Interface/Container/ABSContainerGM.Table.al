@@ -75,4 +75,14 @@ table 90001 "ABS Container GM"
         RefreshBlobFilesGM.RefreshBlobs(Rec);
     end;
 
+    /// <summary>
+    /// Opens blob files page for a container.
+    /// </summary>
+    procedure BlobFiles()
+    var
+        ABSBlobFilesGM: Page "ABS Blob Files GM";
+    begin
+        ABSBlobFilesGM.SetContainerAndStorageName(Rec);
+        ABSBlobFilesGM.Run();
+    end;
 }
