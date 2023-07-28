@@ -21,7 +21,6 @@ page 90005 "ABS Blob Files GM"
                 ShowCaption = false;
                 field(ContainerName; ContainerName)
                 {
-                    ApplicationArea = All;
                     Caption = 'Container Name';
                     ToolTip = 'Specifies the container name.';
                     Enabled = (CurrentFolder = '');
@@ -39,7 +38,6 @@ page 90005 "ABS Blob Files GM"
                 }
                 field(StorageAccountName; StorageAccountName)
                 {
-                    ApplicationArea = All;
                     Caption = 'Storage Account Name';
                     ToolTip = 'Specifies the storage account name.';
                     Editable = false;
@@ -51,7 +49,6 @@ page 90005 "ABS Blob Files GM"
 #pragma warning disable AW0009
                 field(Image; Rec."Blob Type Image")
                 {
-                    ApplicationArea = Basic, Suite;
                     Caption = '';
                     ToolTip = 'Specifies Blob File Type.';
                     trigger OnDrillDown()
@@ -62,7 +59,6 @@ page 90005 "ABS Blob Files GM"
 #pragma warning restore
                 field(Name; Rec."Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the blob file name.';
                     StyleExpr = StyleExpr;
                     trigger OnDrillDown()
@@ -72,12 +68,10 @@ page 90005 "ABS Blob Files GM"
                 }
                 field("Last Modified"; Rec."Last Modified")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the blob last modified date time.';
                 }
                 field(Size; Rec.Size)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the blob size.';
                 }
             }

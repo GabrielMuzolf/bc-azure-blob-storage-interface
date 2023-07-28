@@ -5,6 +5,7 @@ page 90004 "Create Container Dialog GM"
 {
     PageType = StandardDialog;
     Caption = 'Create Container';
+    ApplicationArea = All;
     layout
     {
         area(Content)
@@ -13,7 +14,6 @@ page 90004 "Create Container Dialog GM"
             {
                 field(ContainerName; ContainerName)
                 {
-                    ApplicationArea = All;
                     Caption = 'Name';
                     ToolTip = 'Specifies the container name.';
                 }

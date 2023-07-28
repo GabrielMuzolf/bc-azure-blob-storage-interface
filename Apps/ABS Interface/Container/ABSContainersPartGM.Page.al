@@ -8,6 +8,7 @@ page 90003 "ABS Containers Part GM"
     PageType = ListPart;
     SourceTable = "ABS Container GM";
     Editable = false;
+    ApplicationArea = All;
 
     layout
     {
@@ -17,12 +18,10 @@ page 90003 "ABS Containers Part GM"
             {
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the container name.';
                 }
                 field("Last Modified"; Rec."Last Modified")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the date and time when the container was last modified.';
                 }
             }
@@ -37,7 +36,6 @@ page 90003 "ABS Containers Part GM"
             {
                 Caption = 'Create';
                 ToolTip = 'Run this action to create new container.';
-                ApplicationArea = All;
                 Image = Add;
 
                 trigger OnAction();
@@ -49,7 +47,6 @@ page 90003 "ABS Containers Part GM"
             {
                 Caption = 'Delete';
                 ToolTip = 'Run this action to delete cotainer and his blobs from the storage account.';
-                ApplicationArea = All;
                 Image = Delete;
 
                 trigger OnAction();
