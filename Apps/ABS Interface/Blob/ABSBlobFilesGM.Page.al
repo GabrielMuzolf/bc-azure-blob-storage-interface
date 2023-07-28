@@ -134,10 +134,11 @@ page 90005 "ABS Blob Files GM"
                 PromotedOnly = true;
                 PromotedCategory = Process;
                 Image = Download;
+                Enabled = ((ContainerName <> '') and (Rec.Type = "ABS Blob Type GM"::File));
 
                 trigger OnAction();
                 begin
-                    Message('Add implementation');
+                    Rec.Download();
                 end;
             }
             action(Upload)
@@ -154,10 +155,10 @@ page 90005 "ABS Blob Files GM"
                     Message('Add implementation');
                 end;
             }
-            action(DeleteSelected)
+            action(Delete)
             {
-                Caption = 'Delete Selected Blobs';
-                ToolTip = 'Run this action to delete selected blob files.';
+                Caption = 'Delete';
+                ToolTip = 'Run this action to delete blob file.';
                 Promoted = true;
                 PromotedOnly = true;
                 PromotedCategory = Process;

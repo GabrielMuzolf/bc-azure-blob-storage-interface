@@ -110,6 +110,7 @@ table 90002 "ABS Blob File GM"
             Caption = 'Blob Type Image';
         }
     }
+
     keys
     {
         key(PK; "Storage Account Name", "Container Name", "Full Name")
@@ -121,4 +122,14 @@ table 90002 "ABS Blob File GM"
 
         }
     }
+
+    /// <summary>
+    /// Downloads a blob file and saves it to the local file system.
+    /// </summary>
+    procedure Download()
+    var
+        ABSBlobOperationGM: Codeunit "ABS Blob Operation GM";
+    begin
+        ABSBlobOperationGM.Download(Rec);
+    end;
 }
