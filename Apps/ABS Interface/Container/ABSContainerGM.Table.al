@@ -44,6 +44,11 @@ table 90001 "ABS Container GM"
         }
     }
 
+    trigger OnDelete()
+    begin
+        DeleteBlobs();
+    end;
+
     /// <summary>
     /// Creates container with name <paramref name="ContainerName"/>.
     /// </summary>
@@ -84,5 +89,14 @@ table 90001 "ABS Container GM"
     begin
         ABSBlobFilesGM.SetContainerAndStorageName(Rec);
         ABSBlobFilesGM.Run();
+    end;
+
+    local procedure DeleteBlobs()
+    var
+        ABSBlobFileGM: Record "ABS Blob File GM";
+    begin
+        ABSBlobFileGM.SetRange("Storage Account Name", Rec."Storage Account Name");
+        ABSBlobFileGM.SetRange("Container Name", Rec.Name);
+        ABSBlobFileGM.DeleteAll(true);
     end;
 }
