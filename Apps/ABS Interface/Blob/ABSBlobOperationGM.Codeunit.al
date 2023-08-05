@@ -20,21 +20,28 @@ codeunit 90005 "ABS Blob Operation GM"
     end;
 
     /// <summary>
-    /// Uploads a blob file represented by the <paramref name="ABSBlobFileGM"/> record to the specified container path <paramref name="ToPath"/>.
+    /// Uploads a blob file represented by the <paramref name="ABSBlobFileGM"/>.
     /// </summary>
     /// <param name="ABSBlobFileGM">The ABS Blob File GM record representing the file to be uploaded.</param>
-    /// <param name="ToPath">The destination path within the container to upload the file to.</param>
-    procedure Upload(ABSBlobFileGM: Record "ABS Blob File GM"; ToPath: Text)
+    /// <param name="DefaultPath">The default path within the container to upload the file to.</param>
+    procedure Upload(ABSBlobFileGM: Record "ABS Blob File GM"; DefaultPath: Text)
     var
         ABSBlobClient: Codeunit "ABS Blob Client";
         ABSOperationResponse: Codeunit "ABS Operation Response";
+        FolderDialogGM: Page "Folder Dialog GM";
+        FolderName: Text;
         BlobFileContentInStream: InStream;
         BlobFileName: Text;
         SelectFileLbl: Label 'Select a file';
     begin
+        FolderDialogGM.SetFolderName(DefaultPath);
+        if FolderDialogGM.RunModal() <> Action::OK then
+            exit;
+
+        FolderName := FolderDialogGM.GetFolderName();
         UploadIntoStream(SelectFileLbl, '', '', BlobFileName, BlobFileContentInStream);
         InitalizeBlobClient(ABSBlobClient, ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
-        ABSOperationResponse := ABSBlobClient.PutBlobBlockBlobStream(ToPath + BlobFileName, BlobFileContentInStream);
+        ABSOperationResponse := ABSBlobClient.PutBlobBlockBlobStream(FolderName + BlobFileName, BlobFileContentInStream);
         ShowErrorIfNotSuccessful(ABSOperationResponse);
         RefreshBlobs(ABSBlobFileGM."Storage Account Name", ABSBlobFileGM."Container Name");
     end;
