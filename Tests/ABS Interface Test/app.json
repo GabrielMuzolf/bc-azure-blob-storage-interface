@@ -1,0 +1,39 @@
+{
+  "id": "98304e69-454a-4db7-ba78-3c218e5536db",
+  "name": "ABS Interface Test",
+  "publisher": "Gabriel Muzolf",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "7affcd9c-615b-4fd7-a157-f49a404814c0",
+      "name": "ABS Interface",
+      "publisher": "Gabriel Muzolf",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 95000,
+      "to": 95010
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "11.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
